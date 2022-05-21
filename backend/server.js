@@ -1,7 +1,10 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 const app = express()
 
-app.listen(PORT, ()=>console.log(`server running on port ${PORT}`))
+app.use('api/fit', require('./routes/userRoutes'))
+
+
+app.listen(PORT, ()=>console.log(`server running on port ${PORT}`)) 
