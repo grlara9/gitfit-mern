@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 5000
 
 const app = express()
 
-app.use('/api/fit', require('./routes/userRoutes'))
+app.use('/api/user', require('./routes/userRoutes'))
 
 
 app.listen(PORT, ()=>console.log(`server running on port ${PORT}`)) 
