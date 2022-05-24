@@ -6,6 +6,10 @@ const connectDB = require('./config/db')
 
 connectDB()
 
+//middleware to use body, ex :req.body
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+
 const app = express()
 
 app.use('/api/user', require('./routes/userRoutes'))
