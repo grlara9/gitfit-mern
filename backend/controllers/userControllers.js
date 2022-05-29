@@ -1,7 +1,9 @@
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs/dist/bcrypt');
-const asyncHandler = require('express-async-handler')
+const asyncHandler = require('express-async-handler');
+const jsonwebtoken = require('jsonwebtoken');
 const User =require('../models/userModel')
- 
+
 //since we are returning promises from mongoose database
 const registerUser = asyncHandler(async(req, res) => {
     const {name, email, password } = req.body;
