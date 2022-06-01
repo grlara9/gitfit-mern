@@ -1,0 +1,35 @@
+.form{  
+    width: 60%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+  }
+  
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    border: none;
+    background-color: antiquewhite;
+    outline: none;
+  }
+  
+  .form-group label {
+    text-align: left;
+    display: block;
+    margin: 0 0 8px 3px;
+    font-weight: bold;
+  }
+  button{
+      margin: 14px;
+      padding: 8px 10px
+  }
+  
+  .button:hover {
+    transform: scale(0.98);
+  }

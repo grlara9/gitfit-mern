@@ -1,7 +1,10 @@
+import Register from './pages/Register' 
+import Login from './pages/Login'
 function App() {
   return (
-    <div className="App">
-      <h1>hola</h1>
+    <div className="container">
+      <Register />
+      <Login />
     </div>
   );
 }
