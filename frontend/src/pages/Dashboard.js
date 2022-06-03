@@ -1,4 +1,6 @@
+import './Register.css'
 const Data = () => {
+    return(
     <section className='form'>
     <form>
       <div className='form-group'>
@@ -79,5 +81,5 @@ const Data = () => {
       </div>
     </form>
     </section>
-}
+)}
 export default Data
