@@ -1,7 +1,8 @@
+import './Header.css'
 const Header = props =>{
     
     return(
-        <header className="gitfit__header">
+        <header className="header">
             {props.children}
         </header> 
     )
