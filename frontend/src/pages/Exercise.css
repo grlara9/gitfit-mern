@@ -1,0 +1,21 @@
+.container{
+    width: 60%;
+    margin: 0 auto;
+    padding: 2rem 0 1rem ;
+    background-color: #f1f1f1;
+    margin-top: 12%;
+  
+}
+
+.container select{
+    padding: 12px;
+    width: 90%;
+    margin: 10px 0 ;
+    font-size: 18px;
+    text-align: center;
+   
+}
+
+.selectionList{
+    padding: 8px;
+}
