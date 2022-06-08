@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import axios from 'axios'
 import './Register.css'
 
 const Register = ( ) => {
@@ -9,6 +10,10 @@ const Register = ( ) => {
     password: '',
     password2: '',
   })
+  const [error, setError] = useState(false);
+
+  
+  const { name, email, password, password2 } = formData
 
   const onChange =(e) =>{
     setFormData((prevState) => ({
@@ -17,14 +22,25 @@ const Register = ( ) => {
     }))
   }
 
-  const onSubmit = () =>{
+  const onSubmit = async (e) =>{
+    e.preventDefault()
 
+    setError(false);
+    try {
+      const res = await axios.post("api/user/register", {
+        name,
+        email,
+        password,
+      });
+      res.data && window.location.replace("/login");
+    } catch (err) {
+      setError(true);
+    }
   }
 
-
-    return(
+ return(
         <section className='form'>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className='form-group'>
             <label>Name</label>
               <input
@@ -74,7 +90,7 @@ const Register = ( ) => {
 
          
           <div className='form-group'>
-          <button type="submit" onSubmit={onSubmit}>SEARCH</button>
+          <button type="submit" >SEARCH</button>
           </div>
         </form>
         </section>
