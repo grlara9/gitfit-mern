@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Register from './pages/Register' 
 import Login from './pages/Login'
-import Data from './pages/Dashboard';
+import Dashboard from './pages/Dashboard';
 import Exercises from './pages/Exercises';
 import Navigation from './components/Navigation'
 
@@ -13,6 +13,7 @@ function App() {
         <Routes>
             <Route path='/' element={<Register />}     />
             <Route path='/login' element={<Login />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/exercise' element={<Exercises />} />
         </Routes>
         

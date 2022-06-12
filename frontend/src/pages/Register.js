@@ -27,11 +27,12 @@ const Register = ( ) => {
 
     setError(false);
     try {
-      const res = await axios.post("api/user/register", {
+      const res = await axios.post("/api/auth/", {
         name,
         email,
         password,
       });
+      console.log("esto es", res)
       res.data && window.location.replace("/login");
     } catch (err) {
       setError(true);

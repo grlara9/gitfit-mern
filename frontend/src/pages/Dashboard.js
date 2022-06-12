@@ -1,5 +1,5 @@
 import './Register.css'
-const Data = () => {
+const Dashboard = () => {
     return(
     <section className='form'>
     <form>
@@ -82,4 +82,4 @@ const Data = () => {
     </form>
     </section>
 )}
-export default Data
+export default Dashboard

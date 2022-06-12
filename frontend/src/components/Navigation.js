@@ -27,7 +27,19 @@ const Navigation = props =>{
 			</div>
             <ul className={open ? 'nav-links active' : 'nav-links'}>
                 <li className="nav-item">
-                    <Link to="/" className="nav-link" onClick={closeMenu}>Home</Link>
+                    <Link to="/" className="nav-link" onClick={closeMenu}>Register</Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link to="/login" className="nav-link" onClick={closeMenu}>Login</Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link to="/exercise" className="nav-link" onClick={closeMenu}>Exercises</Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link to="/dashboard" className="nav-link" onClick={closeMenu}>Home</Link>
                 </li>
 
                
