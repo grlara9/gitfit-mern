@@ -1,9 +1,13 @@
-import {useState} from 'react'
-import axios from 'axios'
+import {useState, useContext} from 'react'
 import {FaUser} from 'react-icons/fa'
 import './Register.css'
+import AlertContext from '../context/alert/alertContext'
 
 const Register = ( ) => {
+
+  const alertContext = useContext(AlertContext)
+
+  const {setAlert} = alertContext
 
   const [formData, setFormData] = useState({
     name: '',
@@ -19,7 +23,9 @@ const Register = ( ) => {
 
   const onSubmit = async (e) =>{
     e.preventDefault()
-
+    if(name === ''|| email=== ''|| password==='' || password2===''){
+      setAlert('please enter all fields')
+    }
     console.log('register submit')
 
   }
@@ -35,7 +41,7 @@ const Register = ( ) => {
                 name="name"
                 onChange={onChange}
                 placeholder="Enter Name"
-                required
+                
               />
           </div>
           <div className='form-group'>
@@ -45,7 +51,7 @@ const Register = ( ) => {
                 name="email"
                 onChange={onChange}
                 placeholder="Enter Email"
-                required
+               
               />
           </div>
           <div className='form-group'>
@@ -55,7 +61,7 @@ const Register = ( ) => {
                 name=" password"
                 onChange={onChange}
                 placeholder="Enter Password"
-                required
+                
               />
             </div>
 
@@ -66,7 +72,7 @@ const Register = ( ) => {
             name=" password2"
             onChange={onChange}
             placeholder="Confirm Password"
-            required
+           
             />
             
           </div>
