@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import {FiMenu, FiX} from 'react-icons/fi'
+import {FaUser} from 'react-icons/fa'
+import { CgLogIn } from 'react-icons/cg'
 import Header from './Header'
 import './Navigation.css'
 
@@ -27,11 +29,11 @@ const Navigation = props =>{
 			</div>
             <ul className={open ? 'nav-links active' : 'nav-links'}>
                 <li className="nav-item">
-                    <Link to="/" className="nav-link" onClick={closeMenu}>Register</Link>
+                    <Link to="/" className="nav-link" onClick={closeMenu}> <FaUser /> Register</Link>
                 </li>
 
                 <li className="nav-item">
-                    <Link to="/login" className="nav-link" onClick={closeMenu}>Login</Link>
+                    <Link to="/login" className="nav-link" onClick={closeMenu}><CgLogIn /> Login</Link>
                 </li>
 
                 <li className="nav-item">

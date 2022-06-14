@@ -1,8 +1,10 @@
+import { CgLogIn } from 'react-icons/cg'
 import './Register.css'
 
 const Register = ( ) => {
     return(
         <section className='form'>
+          <h1><CgLogIn /> Login</h1>
         <form>
         
           <div className='form-group'>

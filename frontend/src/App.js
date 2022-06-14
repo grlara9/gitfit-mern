@@ -4,22 +4,22 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard';
 import Exercises from './pages/Exercises';
 import Navigation from './components/Navigation'
-
+import AuthState from './context/auth/AuthState';
 function App() {
   return (
-    <Router>
-      <div className="container">
-        <Navigation />
-        <Routes>
-            <Route path='/' element={<Register />}     />
-            <Route path='/login' element={<Login />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/exercise' element={<Exercises />} />
-        </Routes>
-        
-      </div>
-    </Router>
-    
+    <AuthState>
+      <Router>
+        <div className="container">
+          <Navigation />
+            <Routes>
+                <Route path='/' element={<Register />}     />
+                <Route path='/login' element={<Login />} />
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/exercise' element={<Exercises />} />
+            </Routes>
+        </div>
+      </Router>
+    </AuthState>
   );
 }
 
