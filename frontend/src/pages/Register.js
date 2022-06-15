@@ -2,12 +2,16 @@ import {useState, useContext} from 'react'
 import {FaUser} from 'react-icons/fa'
 import './Register.css'
 import AlertContext from '../context/alert/alertContext'
-
+import AuthContext from '../context/auth/authContext'
 const Register = ( ) => {
 
   const alertContext = useContext(AlertContext)
+  const authContext = useContext(AuthContext)
 
+  const {register} = authContext
   const {setAlert} = alertContext
+
+
 
   const [formData, setFormData] = useState({
     name: '',
@@ -23,12 +27,18 @@ const Register = ( ) => {
 
   const onSubmit = async (e) =>{
     e.preventDefault()
-    if(name === ''|| email=== ''|| password==='' || password2===''){
-      setAlert('please enter all fields')
+    if (name === '' || email === '' || password === '' || password2 ==='') {
+      setAlert('Please enter all fields', 'danger');
+    } else if (password !== password2) {
+      setAlert('Passwords do not match', 'danger');
+    } else {
+      register({
+        name,
+        email,
+        password
+      });
     }
-    console.log('register submit')
-
-  }
+  };
 
  return(
         <section className='form'>
@@ -39,6 +49,7 @@ const Register = ( ) => {
               <input
                 type="text"
                 name="name"
+                value={name}
                 onChange={onChange}
                 placeholder="Enter Name"
                 
@@ -49,6 +60,7 @@ const Register = ( ) => {
               <input
                 type="email"
                 name="email"
+                value={email}
                 onChange={onChange}
                 placeholder="Enter Email"
                
@@ -59,6 +71,7 @@ const Register = ( ) => {
               <input
                 type="password"
                 name=" password"
+               
                 onChange={onChange}
                 placeholder="Enter Password"
                 
@@ -70,6 +83,7 @@ const Register = ( ) => {
           <input
             type="password"
             name=" password2"
+           
             onChange={onChange}
             placeholder="Confirm Password"
            

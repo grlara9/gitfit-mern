@@ -1,6 +1,7 @@
 import React, {useContext, useReducer} from 'react'
 import AuthContext from './authContext';
 import authReducer from './authReducer';
+import axios from 'axios'
 
 import {
     REGISTER_SUCCESS,
@@ -14,33 +15,57 @@ import {
   } from '../types';
 
   const AuthState = props => {
-      const initialState = {
-          token: localStorage.getItem('token'),
-          isAuthenticated: null,
-          loading: true,
-          error: null
-      }
+    const initialState = {
+        token: localStorage.getItem('token'),
+        isAuthenticated: null,
+        loading: true,
+        user: null,
+        error: null
+    }
 
-     const [state, dispatch] = useReducer(authReducer, initialState)
+const [state, dispatch] = useReducer(authReducer, initialState);
 
-     //Load user
+      
+      //Load user
+      
+      //Register user
+       const register = async formData => {
+        const config ={
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+          try {
+              const res = await axios.post('/api/auth', formData, config);
 
-     //Register user
+              dispatch({
+                type: REGISTER_SUCCESS,
+                payload: res.data
+              })
+            } catch (err) {
+                dispatch({
+                    type: REGISTER_FAIL,
+                    payload: err.response.data.message
+                })
+            }
+        }
+        //login user
+        
+        //logout
+        
+        //clear errors
 
-     //login user
-
-     //logout
-
-     //clear errors
-
-     return(
-         <AuthContext.Provider
+        
+        
+        return(
+            <AuthContext.Provider
             value={{
                 token: state.token,
                 isAuthenticated: state.isAuthenticated,
                 loading: state.loading,
                 user: state.user,
                 error: state.error,
+                register
             }}
          >
              {props.children}
