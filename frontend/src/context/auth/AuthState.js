@@ -36,7 +36,7 @@ const [state, dispatch] = useReducer(authReducer, initialState);
             }
         }
           try {
-              const res = await axios.post('/api/auth', formData, config);
+              const res = await axios.post('/api/auth/', formData, config);
 
               dispatch({
                 type: REGISTER_SUCCESS,
@@ -54,7 +54,7 @@ const [state, dispatch] = useReducer(authReducer, initialState);
         //logout
         
         //clear errors
-
+        const clearErrors = () => dispatch({type: CLEAR_ERRORS})
         
         
         return(
@@ -65,7 +65,8 @@ const [state, dispatch] = useReducer(authReducer, initialState);
                 loading: state.loading,
                 user: state.user,
                 error: state.error,
-                register
+                register,
+                clearErrors
             }}
          >
              {props.children}

@@ -1,17 +1,21 @@
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import {FaUser} from 'react-icons/fa'
-import './Register.css'
 import AlertContext from '../context/alert/alertContext'
 import AuthContext from '../context/auth/authContext'
-const Register = ( ) => {
+import './Register.css'
 
+const Register = ( ) => {
   const alertContext = useContext(AlertContext)
   const authContext = useContext(AuthContext)
 
-  const {register} = authContext
   const {setAlert} = alertContext
+  const {register, error, clearErrors} = authContext
 
-
+  useEffect(()=> {
+    if(error === 'Email already taken')
+    setAlert(error)
+    clearErrors();
+},[error])
 
   const [formData, setFormData] = useState({
     name: '',
@@ -67,28 +71,27 @@ const Register = ( ) => {
               />
           </div>
           <div className='form-group'>
-            <label>Password</label>
-              <input
-                type="password"
-                name=" password"
-               
-                onChange={onChange}
-                placeholder="Enter Password"
-                
-              />
+          <label htmlFor='password'>Password</label>
+          <input
+            id='password'
+            type='password'
+            name='password'
+            value={password}
+            onChange={onChange}
+           
+          />
             </div>
 
           <div className='form-group'>
-          <label>Password</label>
+          <label htmlFor='password2'>Confirm Password</label>
           <input
-            type="password"
-            name=" password2"
-           
+            id='password2'
+            type='password'
+            name='password2'
+            value={password2}
             onChange={onChange}
-            placeholder="Confirm Password"
            
             />
-            
           </div>
 
          
