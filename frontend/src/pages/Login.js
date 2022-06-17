@@ -1,8 +1,28 @@
-import {useState } from 'react'
+import {useState, useEffect, useContext } from 'react'
 import { CgLogIn } from 'react-icons/cg'
+import AuthContext from '../context/auth/authContext';
+import AlertContext from '../context/alert/alertContext';
 import './Register.css'
 
-const Register = ( ) => {
+const Register = (props ) => {
+
+  const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+
+    if (error === 'Invalid Credentials') {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -17,14 +37,12 @@ const Register = ( ) => {
 
   const onSubmit = async (e) =>{
     e.preventDefault()
-    if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
-    } else {
+    
       login({
         email,
         password
       });
-    }
+    
   };
 
     return(
