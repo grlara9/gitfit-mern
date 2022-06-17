@@ -29,23 +29,22 @@ const [state, dispatch] = useReducer(authReducer, initialState);
       //Load user
       
       //Register user
-       const register = async formData => {
-        const config ={
-            headers: {
-                'Content-Type': 'application/json'
-            }
+const register = async formData => {
+    const config ={
+        headers: {
+            'Content-Type': 'application/json'
         }
-          try {
-              const res = await axios.post('/api/auth/', formData, config);
-
-              dispatch({
-                type: REGISTER_SUCCESS,
-                payload: res.data
+    }
+        try {
+            const res = await axios.post('/api/auth/', formData, config);
+                dispatch({
+                    type: REGISTER_SUCCESS,
+                    payload: res.data
               })
             } catch (err) {
                 dispatch({
                     type: REGISTER_FAIL,
-                    payload: err.response.data.message
+                    payload: err.response.data.msg
                 })
             }
         }
