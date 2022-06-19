@@ -12,7 +12,7 @@ const registerUser = asyncHandler(async(req, res) => {
 
     if(!name || !email || !password){
         res.status(400)
-        throw new Error("All fields must be fill out")
+        throw new Error('All fields must be fill out')
     }
 
     if(!emailRegex.test(email)){
