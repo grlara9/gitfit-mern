@@ -14,7 +14,6 @@ const Register = ( ) => {
   useEffect(()=> {
     if(error === 'Email already taken')
     setAlert(error)
-    console.log('errorr', error)
     clearErrors();
 },[error])
 
